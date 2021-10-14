@@ -218,7 +218,7 @@ const mike = new Student({
   favSubjects: ['Bitcoin', 'Poker', 'Losing']
 });
 
-console.log(mike.PRAssignment('programming'));
+// console.log(mike.PRAssignment('programming'));
 
 /*
   TASK 6
@@ -233,8 +233,18 @@ console.log(mike.PRAssignment('programming'));
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
-   
+class ProjectManager extends Instructor{
+  constructor(obj) {
+    super(obj);
+    this.gradClassName = obj.gradClassName;
+    this.favInstructor = obj.favInstructor;
+  }
+  standUp(channel) {
+    return `${this.name} announces to ${channel}, @channel standy times!`;
+  }
+  debugsCode(studentObj, subject) {
+    return `${this.name} debugs ${studentObj.name}'s code on ${subject}`;
+  }
 }
 /*
   STRETCH PROBLEM (no tests!)
