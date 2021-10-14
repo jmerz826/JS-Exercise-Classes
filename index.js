@@ -99,10 +99,10 @@ class Car {
   }
 }
 
-const jeep = new Car('liberty', 10);
-jeep.fill(5);
-console.log(jeep.drive(50));
-console.log(jeep);
+// const jeep = new Car('liberty', 10);
+// jeep.fill(5);
+// console.log(jeep.drive(50));
+// console.log(jeep);
 
 /*
   TASK 3
@@ -127,6 +127,14 @@ class Lambdasian {
   }
 }
 
+const john = new Lambdasian({
+  name: 'John',
+  age: 23,
+  location: 'New York'
+});
+
+console.log(john);
+
 /*
   TASK 4
     - Write an Instructor class extending Lambdasian.
@@ -141,9 +149,29 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
+class Instructor extends Lambdasian{
+  constructor(attributesObj) {
+    super(attributesObj);
+    this.specialty = attributesObj.specialty;
+    this.favLanguage = attributesObj.favLanguage;
+    this.catchPhrase = attributesObj.catchPhrase;
+  }
+  demo(subject) {
+    return `Today we are learning about ${subject}`;
+  }
+  grade(studentObj, subject) {
+    return `${studentObj.name} receives a perfect score on ${subject}`;
+  }
 
 }
+
+const brit = new Instructor({
+  name: 'Brit',
+  age: 27,
+  location: 'Canada'
+})
+
+console.log(brit);
 /*
   TASK 5
     - Write a Student class extending Lambdasian.
