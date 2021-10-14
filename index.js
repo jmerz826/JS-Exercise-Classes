@@ -133,7 +133,7 @@ const john = new Lambdasian({
   location: 'New York'
 });
 
-console.log(john);
+// console.log(john);
 
 /*
   TASK 4
@@ -162,17 +162,21 @@ class Instructor extends Lambdasian{
   grade(studentObj, subject) {
     return `${studentObj.name} receives a perfect score on ${subject}`;
   }
+  modifyGrade(studentObj) {
+    const posOrNeg = (Math.random() > 0.5 ? 1 : -1);
+    return studentObj.grade += (Math.floor(Math.random() * 11) * posOrNeg);
+  }
 
 }
 
-// const brit = new Instructor({
-//   name: 'Brit',
-//   age: 27,
-//   location: 'Canada',
-//   specialty: 'CSS',
-//   favLanguage: 'Javascript',
-//   catchPhrase: 'Hey all you cool cats and kittens',
-// });
+const brit = new Instructor({
+  name: 'Brit',
+  age: 27,
+  location: 'Canada',
+  specialty: 'CSS',
+  favLanguage: 'Javascript',
+  catchPhrase: 'Hey all you cool cats and kittens',
+});
 
 // console.log(brit.demo('inheritance'));
 /*
@@ -196,6 +200,7 @@ class Student extends Lambdasian{
     this.previousBackground = givenObj.previousBackground;
     this.className = givenObj.className;
     this.favSubjects = givenObj.favSubjects;
+    this.grade = givenObj.grade;
   }
   listSubjects() {
     const subjectStr = this.favSubjects.join(', ');
@@ -207,6 +212,9 @@ class Student extends Lambdasian{
   sprintChallenge(subject) {
     return `${this.name} has begun sprint challenge on ${subject}`;
   }
+  graduate() {
+    return this.grade > 70 ? `Graduate!` :  `Hit the books, ${this.name}!`;
+  }
 }
 
 const mike = new Student({
@@ -215,11 +223,15 @@ const mike = new Student({
   location: 'Long Island',
   previousBackground: 'Finance',
   className: 'Web',
-  favSubjects: ['Bitcoin', 'Poker', 'Losing']
+  favSubjects: ['Bitcoin', 'Poker', 'Losing'],
+  grade: 69,
 });
 
 // console.log(mike.PRAssignment('programming'));
-
+// console.log(brit.modifyGrade(mike));
+brit.modifyGrade(mike);
+console.log(mike.grade);
+console.log(mike.graduate());
 /*
   TASK 6
     - Write a ProjectManager class extending Instructor.
@@ -255,6 +267,7 @@ class ProjectManager extends Instructor{
       + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
 */
 
+// Student.prototype.grade = Math.floor(Math.random() * 100) + 1;
 
 //End of Challenge
 /* 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 */
